@@ -1,0 +1,64 @@
+<h1>Projeto</h1>
+<ul class="tree">
+    <div class="panel">
+        <li>
+            <span class="backend">backend</span>
+            <ul class="ul-backend">
+                <li>
+                    <span class="app">app</span>
+                    <ul class="ul-app">
+                        <li>produto.js</li>
+                        <li>usuario.js</li>
+                        <li>venda.js</li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="config">config</span>
+                    <ul class="ul-config">
+                        <li>banco.js</li>
+                        <li>rotas.js</li>
+                        <li>servidor.js</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <span class="frontend">frontend</span>
+            <ul class="ul-frontend">
+                <li>
+                    <span class="public">public</span>
+                    <ul class="ul-public">
+                        <li>app.css</li>
+                        <li>app.js</li>
+                        <li>app.html</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </div>
+</ul>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script> 
+$(document).ready(function(){
+  $(".app").click(function(){
+    $(".ul-app").slideToggle("speed");
+  });
+  $(".config").click(function(){
+    $(".ul-config").slideToggle("speed");
+  });
+  $(".backend").click(function(){
+    $(".ul-backend").slideToggle("speed");
+  });
+  $(".frontend").click(function(){
+    $(".ul-frontend").slideToggle("speed");
+  });
+  $(".public").click(function(){
+    $(".ul-public").slideToggle("speed");
+    $(".ul-public").slideToggle("speed");
+  });
+});
+</script>

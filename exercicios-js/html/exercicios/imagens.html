@@ -1,0 +1,112 @@
+<div wm-slider>
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg"
+            alt="Muro da Cidade"
+            width="513" height="342"
+            title="Muro da Cidade por Tarso Bessa">
+    </p>
+    
+    <p>
+            <img src="http://files.cod3r.com.br/curso-web/imagem2.gif"
+                alt="Intro Cod3r"  height="342">
+    </p>
+    
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" 
+            alt="Rio de Janeiro" height="342">
+    </p>
+    
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg"
+            alt="Avatar" height="50" align="left">
+        Texto dsfsd fsd fsd fsd f sdf sdfsdfsd sdfgsdg 
+        fhfghfg fghfg hfghfghfg fghfghfgh fghfghfgh fghfgh gfhfgh ]
+        ewrerte tryerew ewrwerer etertertert ertertert ertertert 
+        fhdhg etergdf dsadsfdf tiyuiyu
+    </p>
+    
+    <p class="cidade"></p>
+    
+    <p>
+        <picture>
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+                media="(min-width: 600px)">
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo Estreita">
+        </picture>
+    </p>
+</div>
+
+
+<style>
+    p {
+        position: absolute;
+        display: none;
+    }
+
+    .circular {
+        width: 513px;
+        background-color: #444;
+    }
+
+    .texto {
+       width: 400px; 
+    }
+
+    .texto img {
+        margin-right: 10px;
+    }
+
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url("http://files.cod3r.com.br/curso-web/imagem4.jpg");
+        position: center;
+        background-repeat: no-repeat;
+        background-size: 160%;
+    }
+</style>
+
+<script>
+    function mover(elem, inicio, fim, passo, callback) {
+        const novoInicio = inicio - passo
+        if(novoInicio >= fim) {
+            elem.style.left = novoInicio + 'px'
+            setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7);
+        } else {
+            callback()
+        }
+    }
+
+    function slider() {
+        const elementos = document.querySelectorAll('[wm-slider] > p') // Seleciona todos os elementos p
+        const slides = Array.from(elementos) // Transforma o node list em um Array
+        exibirSlides(slides, slides[0])
+    }
+
+    function exibirSlides(slides, slide) {
+        slide.style.display = 'block' // Torna o slide visivel
+
+        const inicio = innerWidth // Obter a largura do browser
+        const fim = -slide.clientWidth // Obter a largura do elemento 
+
+        slide.style.left = `${inicio}px`
+
+        mover(slide, inicio, fim, 5, () => {
+            slide.style.display = 'none'
+            exibirSlides(slides, getProximo(slides, slide))
+        })
+    }
+
+    function getProximo(lista, atual) {
+        const i = lista.indexOf(atual) + 1 // Retorna o elemento atual e vai para o proximo
+        return i < lista.length ? lista[i] : lista[0]
+    }
+
+    slider()    
+
+    // const p = document.querySelector('[wm-slider] > p')
+    // p.style.display = 'block'
+    // mover(p, 1500, -520, 5, () => {
+    //     console.log('terminou!!')
+    // })
+</script>

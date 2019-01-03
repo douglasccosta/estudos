@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'> <!-- Mesmo app da linha angular.module('app', []) -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fundamentos de Angular</title>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript">
+        // Definir a aplicação do Angular
+        angular.module('app', [])
+        angular.module('app').component('field', {
+            bindings: {
+                id: '@',
+                label: '@',
+                model: '=' 
+                // = Ao alterar o scopo do componente, o scopo do controller também será alterdo - Binding Bi-direcional
+                // < Ao alterar o scopo do componente, o scopo do controller não será alterdo - Binding Uni-direcional
+            },
+            template: `
+                <label for="{{ $ctrl.id }}">{{ $ctrl.label }}</label>
+                <input id="{{ $ctrl.id }}" ng-model='$ctrl.model'>
+            `
+        })
+
+        angular.module('app').controller('MeuController', function() {
+            const self = this
+            self.name = "Anônimo" // Scopo do controller
+        })
+    </script>
+</head>
+<body>
+    <div ng-controller="MeuController as ctrl">
+        <h1>{{ ctrl.name }}</h1>
+        <field id="nome" label="Nome" model="ctrl.name"></field> <!--Scopo do componente-->
+    </div>     
+</body>
+</html>

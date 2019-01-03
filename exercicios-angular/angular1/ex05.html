@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'> <!-- Mesmo app da linha angular.module('app', []) -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fundamentos de Angular</title>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript">
+        // Definir a aplicação do Angular
+        angular.module('app', [])
+        angular.module('app').filter('upper', function() {
+            return function(input) {
+                return input.toUpperCase()
+            }
+        })
+        angular.module('app').controller('MeuController', [
+            function() { // Scope serve como intermediador entre a view (DOM) e o controller
+                const self = this
+                self.value = "Texto"
+            }
+        ])
+    </script>
+</head>
+<body>
+    <div ng-controller="MeuController as ctrl"> <!-- Referenciando o controler ao ctrl (alias) -->
+        <h1>{{ ctrl.value | upper }}</h1>
+        <input ng-model="ctrl.value">
+    </div>
+</body>
+</html>
