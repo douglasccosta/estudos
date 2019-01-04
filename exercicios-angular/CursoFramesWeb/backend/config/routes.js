@@ -11,5 +11,8 @@ module.exports = function(server) {
     const billingCycleService = require('../api/billingCycle/billingCycleService')
     // Todos os serviços usuaram como URL raiz billingCycles
     // Registrando os serviços em router
-    billingCycleService.register(router, '/billingCycles')  
+    billingCycleService.register(router, '/billingCycles') 
+
+    const billingSummaryService = require('../api/billingSummary/billingSumaryService')
+    router.route('/billingSumary').get(billingSummaryService.getSummary)
 }
