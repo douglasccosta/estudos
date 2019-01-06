@@ -6,7 +6,7 @@ require('./gulpTasks/app')
 require('./gulpTasks/deps')
 require('./gulpTasks/server')
 
-// Defaul é uma convenção do gulp que temos que seguir
+// Default é uma convenção do gulp que temos que seguir
 // Será chamada no momento que invocarmos o comando gulp
 gulp.task('default', () => {
     if(util.env.production) {
